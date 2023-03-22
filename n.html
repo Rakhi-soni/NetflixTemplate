@@ -4,29 +4,37 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://kit.fontawesome.com/173f20aee9.js" crossorigin="anonymous"></script>
     <title>Sign in page</title>
     <link rel="stylesheet" href="style.css">
-     
+
 </head>
 
 <body>
 
     <div class="main">
-        <div class="logo"></div>
+        <div class="logo"><img src="image/n-logo.png" alt=""></div>
         <div class="form">
             <span>Sign In</span>
             <form>
-                <input type="email" class="input" name="user_email" placeholder="Email or phone number" />
-                <input type="password" class="input" name="user_password" placeholder="Password" />
-                <button class="btn">Sign In</button>
+               <div><input type="email" class="input" name="user_email" required id="email"/>
+                <label>Email or phone number</label>
+                
+            </div>
+            <div class="error" id="e_error">Please enter a valid email address or phone number</div>
+                <div><input type="password" class="input" name="user_password"  required id="pass" oninput="password()"/>
+                <label>Password</label>
+               
+            </div>
+            <div class="error" id="p_error">Your password must contain between 4 and 60 characters.</div>
+                <div><button class="btn" onclick="validate()">Sign In</button></div>
             </form>
             <div class="cheakbox">
-                <input type="checkbox" style="color: gray;" name="remember_me"> <label
-                    style="color: gray; padding-left: 5px;">
+                <input type="checkbox" style="color: gray;" name="remember_me">
+                 <label style="color: gray; padding-left: 5px;">
                     Remember me</label>
-                <label style="color: gray; padding-left: 7.8rem;"><a href="" style="color: gray;">Need help?</a></label>
+                <label><a href="" style="color: gray;">Need help?</a></label>
             </div>
             <div class="l-span">
                 <span>New to Netflix? </span>
@@ -43,31 +51,70 @@
 
 
         </div>
+
+
         <div class="footer">
-        <footer>
-            <h4>Questions? Call<a href="" style="color:gray"> 000-800-919-1694</a></h4>
-            <table>
-                <tr>
-                    <td><a href="" >FAQ</a></td>
-                    <td><a href="">Help Center</a></td>
-                    <td><a href="">Terms of use</a></td>
-                    <td><a href="">Privacy</a></td>
-                  </tr>
-                  <tr>
-                    <td><a href=""> Cookie Preferences</a></td>
-                    <td><a href="">Corporate Information</a></td>
-                     </tr>
-            </table>
-            <div class="select">
-                
-                <select>
-                    <option>English</option>
-                    <option>हिंदी</option>
-                </select>
-            </div>
-        </footer>
+            <div class="footer-divider"></div>
+            <footer>
+                <h4>Questions? Call<a href="" style="color:gray"> 000-800-919-1694</a></h4>
+                <table>
+                    <tr>
+                        <td><a href="">FAQ</a></td>
+                        <td><a href="">Help Center</a></td>
+                        <td><a href="">Terms of use</a></td>
+                        <td><a href="">Privacy</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href=""> Cookie Preferences</a></td>
+                        <td><a href="">Corporate Information</a></td>
+                    </tr>
+                </table>
+                <div class="select">
+                    <i class="fa-solid fa-globe"></i>
+                    <select>
+
+                        <option>English</option>
+                        <option>हिंदी</option>
+                    </select>
+                </div>
+            </footer>
         </div>
     </div>
+
+    <script>
+           function validate() {
+            var x = document.getElementById("email").value;
+            var y=document.getElementById("pass");         
+             if (x == "") {
+                console.log("error")
+                document.getElementById("e_error").style.display= "block";
+                document.getElementById("email").style.borderBottom="2px solid #FA8223";
+            
+            }  
+             
+        };
+
+        function password(){
+            var y= document.getElementById("pass");
+            var min = 4;
+            var max = 60;
+
+            if(y==""){
+                document.getElementById("p_error").style.display= "block";
+                document.getElementById("pass").style.borderBottom="2px solid #FA8223";
+            } 
+            if( y.value.length<min||y.value.length>max){
+                document.getElementById("p_error").style.display= "block";
+                document.getElementById("pass").style.borderBottom="2px solid #FA8223";
+            }else{
+                document.getElementById("p_error").style.display= "none";
+                document.getElementById("pass").style.borderBottom="none";
+                
+            }
+        }
+
+
+    </script>
 
 </body>
 
